@@ -1,0 +1,39 @@
+.product-detail {
+    padding: 20px;
+  }
+  
+  .back-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  
+  .product-detail-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .product-detail-image {
+    width: 300px;
+    height: auto;
+  }
+  
+  .product-detail-info {
+    max-width: 600px;
+  }
+  
+  .product-price {
+    color: #e74c3c;
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .product-description {
+    font-size: 16px;
+    color: #555;
+  }
+  
