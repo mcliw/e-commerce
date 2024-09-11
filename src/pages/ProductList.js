@@ -1,4 +1,3 @@
-// src/pages/ProductList.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductCard from '../components/ProductCard';
@@ -8,7 +7,6 @@ function ProductList() {
     const [products, setProducts] = useState([]);
   
     useEffect(() => {
-      // Fetch data from API
       axios.get('https://h5ltj4-8080.csb.app/books')
         .then(response => {
           setProducts(response.data);
@@ -19,10 +17,10 @@ function ProductList() {
     }, []);
   
     return (
-      <div className="product-list">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+      <div className="flex flex-row flex-wrap basis-5/6">       
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
       </div>
     );
   }

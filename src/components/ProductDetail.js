@@ -4,12 +4,11 @@ import axios from 'axios';
 import './ProductDetail.css';
 
 function ProductDetail() {
-  const { id } = useParams(); // Lấy ID sản phẩm từ URL
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch product details from API based on the ID
     axios.get(`https://h5ltj4-8080.csb.app/books/${id}`)
       .then(response => {
         setProduct(response.data);

@@ -1,35 +1,33 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .navbar-list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .navbar-item {
-    margin-right: 15px;
-    cursor: pointer;
-    padding: 5px 10px;
-  }
-  
-  .navbar-item.active {
-    color: #3498db;
-    font-weight: bold;
-  }
-  
-  .filter-button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.checkbox-custom {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #C4C4CF;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+
+.checkbox-custom:checked::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #0A68FF;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  content: '✔';
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+}
+
   
