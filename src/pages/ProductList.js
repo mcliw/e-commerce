@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 import './ProductList.css';
 
-function ProductList() {
-    const [products, setProducts] = useState([]);
-  
+function ProductList({ products }) {
+    const [filteredProducts, setFilteredProducts] = useState(products);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(20);
+
     useEffect(() => {
-      axios.get('https://h5ltj4-8080.csb.app/books')
-        .then(response => {
-          setProducts(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching products:', error);
-        });
-    }, []);
-  
+        setFilteredProducts(products);
+    }, [products]);
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+      setCurrentPage(pageNumber);
+    };
+
     return (
-      <div className="flex flex-row flex-wrap basis-5/6">       
-          {products.map((product) => (
+      <div className="flex flex-col">
+        <div className="flex flex-row flex-wrap lg:basis-5/6">
+          {currentProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+
+        <div className="flex justify-center lg:mt-40 mt-10 ">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`mx-2 px-4 py-2 rounded ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
       </div>
     );
-  }
-  
+}
 
 export default ProductList;

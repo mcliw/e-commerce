@@ -13,3 +13,8 @@ ul li{
   width: 83px;
 }
   
+@media (max-width: 768px) {
+  .footer {
+    display: none;
+  }
+}
